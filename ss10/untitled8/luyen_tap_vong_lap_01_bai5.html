@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tổng 20 Số Fibonacci Đầu Tiên</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính Tổng 20 Số Fibonacci Đầu Tiên</h1>
+<div id="result" style="text-align: center; font-size: 24px;"></div>
+
+<script>
+  const fibonacciNumbers = [0, 1]; // Khởi tạo mảng Fibonacci với hai số đầu tiên
+  let sum = fibonacciNumbers[0] + fibonacciNumbers[1]; // Tính tổng ban đầu
+
+  // Tính toán 18 số tiếp theo
+  for (let i = 2; i < 20; i++) {
+    const nextNumber = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
+    fibonacciNumbers.push(nextNumber); // Thêm số mới vào mảng
+    sum += nextNumber; // Cộng số mới vào tổng
+  }
+
+  // Hiển thị kết quả
+  document.getElementById('result').innerText = "Tổng 20 số Fibonacci đầu tiên là: " + sum;
+</script>
+</body>
+</html>

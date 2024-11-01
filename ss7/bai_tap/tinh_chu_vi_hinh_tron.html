@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính chu vi hình tròn</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    input { margin: 5px; }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+<h1>Tính chu vi hình tròn</h1>
+<label for="radius">Nhập bán kính (r):</label>
+<input type="number" id="radius" step="0.1"><br>
+
+<button onclick="calculateCircumference()">Tính chu vi</button>
+
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script>
+  function calculateCircumference() {
+    const radius = parseFloat(document.getElementById("radius").value);
+    const circumference = 2 * Math.PI * radius;
+
+    document.getElementById("result").innerText = `Chu vi hình tròn với bán kính ${radius} là: ${circumference.toFixed(2)}`;
+  }
+</script>
+</body>
+</html>

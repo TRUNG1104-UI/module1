@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương Trình FizzBuzz</title>
+</head>
+<body>
+<h1 style="text-align: center;">Chương Trình FizzBuzz</h1>
+<div id="output" style="text-align: center; font-size: 24px;"></div>
+
+<script>
+  const output = document.getElementById('output');
+
+  for (let i = 1; i <= 100; i++) {
+    let displayText = '';
+
+    if (i % 3 === 0) {
+      displayText += 'Fizz'; // Nếu chia hết cho 3
+    }
+    if (i % 5 === 0) {
+      displayText += 'Buzz'; // Nếu chia hết cho 5
+    }
+    if (displayText === '') {
+      displayText = i; // Nếu không chia hết cho 3 hoặc 5
+    }
+
+    output.innerHTML += displayText + '<br>'; // Hiển thị kết quả
+  }
+</script>
+</body>
+</html>

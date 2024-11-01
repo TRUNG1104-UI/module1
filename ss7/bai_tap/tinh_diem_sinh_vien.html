@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm sinh viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        input {
+            margin: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Nhập điểm của sinh viên</h1>
+<label for="vatLy">Điểm Vật lý:</label>
+<input type="number" id="vatLy" step="0.1"><br>
+
+<label for="hoaHoc">Điểm Hóa học:</label>
+<input type="number" id="hoaHoc" step="0.1"><br>
+
+<label for="sinhHoc">Điểm Sinh học:</label>
+<input type="number" id="sinhHoc" step="0.1"><br>
+
+<button onclick="tinhDiem()">Tính điểm</button>
+
+<h2>Kết quả:</h2>
+<p id="tongDiem"></p>
+<p id="diemTrungBinh"></p>
+
+<script>
+    function tinhDiem() {
+        const diemVatLy = parseFloat(document.getElementById("vatLy").value);
+        const diemHoaHoc = parseFloat(document.getElementById("hoaHoc").value);
+        const diemSinhHoc = parseFloat(document.getElementById("sinhHoc").value);
+
+        const tongDiem = diemVatLy + diemHoaHoc + diemSinhHoc;
+        const diemTrungBinh = tongDiem / 3;
+
+        document.getElementById("tongDiem").innerText = "Tổng điểm: " + tongDiem.toFixed(2);
+        document.getElementById("diemTrungBinh").innerText = "Điểm trung bình: " + diemTrungBinh.toFixed(2);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xếp Hạng Học Lực</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Xếp Hạng Học Lực</h1>
+  <label for="testScore">Điểm bài kiểm tra: </label>
+  <input type="number" id="testScore" required>
+  <br>
+  <label for="midtermScore">Điểm thi giữa kỳ: </label>
+  <input type="number" id="midtermScore" required>
+  <br>
+  <label for="finalScore">Điểm thi cuối kỳ: </label>
+  <input type="number" id="finalScore" required>
+  <br>
+  <button onclick="rankStudent()">Xếp Hạng</button>
+  <h2 id="result"></h2>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+  function rankStudent() {
+    const testScore = parseFloat(document.getElementById('testScore').value);
+    const midtermScore = parseFloat(document.getElementById('midtermScore').value);
+    const finalScore = parseFloat(document.getElementById('finalScore').value);
+
+    if (isNaN(testScore) || isNaN(midtermScore) || isNaN(finalScore)) {
+      alert('Vui lòng nhập các điểm hợp lệ.');
+      return;
+    }
+
+    // Tính điểm trung bình
+    const averageScore = (testScore + midtermScore + finalScore) / 3;
+
+    let rank;
+    if (averageScore >= 9) {
+      rank = 'Xuất sắc';
+    } else if (averageScore >= 7) {
+      rank = 'Giỏi';
+    } else if (averageScore >= 5) {
+      rank = 'Khá';
+    } else if (averageScore >= 3) {
+      rank = 'Trung bình';
+    } else {
+      rank = 'Yếu';
+    }
+
+    document.getElementById('result').innerText = `Điểm trung bình: ${averageScore.toFixed(2)} - Xếp hạng: ${rank}`;
+  }
+
+</script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+</style>

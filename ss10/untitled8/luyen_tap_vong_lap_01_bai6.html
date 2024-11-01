@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tổng 30 Số Chia Hết Cho 7</title>
+</head>
+<body>
+<h1 style="text-align: center;">Tính Tổng 30 Số Chia Hết Cho 7</h1>
+<div id="result" style="text-align: center; font-size: 24px;"></div>
+
+<script>
+  let count = 0; // Đếm số lượng số chia hết cho 7
+  let sum = 0;   // Khởi tạo tổng
+  let number = 1; // Bắt đầu từ số tự nhiên 1
+
+  // Tìm 30 số chia hết cho 7
+  while (count < 30) {
+    if (number % 7 === 0) {
+      sum += number; // Cộng vào tổng
+      count++; // Tăng số đếm lên
+    }
+    number++; // Kiểm tra số tiếp theo
+  }
+
+  // Hiển thị kết quả
+  document.getElementById('result').innerText = "Tổng 30 số chia hết cho 7 đầu tiên là: " + sum;
+</script>
+</body>
+</html>

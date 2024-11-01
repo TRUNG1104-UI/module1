@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Đoán Số</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>Hãy thử đoán số!</h1>
+<button id="playButton">Chơi</button>
+<div id="message"></div>
+
+<script>
+  const playButton = document.getElementById('playButton');
+  const messageDiv = document.getElementById('message');
+  let randomNumber;
+  let attempts = 0;
+  const maxAttempts = 3;
+
+  playButton.addEventListener('click', () => {
+    const min = parseInt(prompt("Nhập số tối thiểu bạn muốn đoán:"));
+    const max = parseInt(prompt("Nhập số tối đa bạn muốn đoán:"));
+
+    if (isNaN(min) || isNaN(max) || min >= max) {
+      messageDiv.innerHTML = "Vui lòng nhập số hợp lệ!";
+      return;
+    }
+
+    randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    attempts = 0;
+    messageDiv.innerHTML = "Đã sẵn sàng! Hãy đoán số trong khoảng " + min + " đến " + max + ".";
+    askForGuess();
+  });
+
+  function askForGuess() {
+    if (attempts >= maxAttempts) {
+      messageDiv.innerHTML = `Bạn đã hết lượt đoán! Số đúng là ${randomNumber}.`;
+      return;
+    }
+
+    const guess = prompt("Nhập số bạn đoán:");
+
+    if (guess === null) {
+      messageDiv.innerHTML = "Bạn đã hủy trò chơi.";
+      return;
+    }
+
+    const guessedNumber = parseInt(guess);
+    attempts++;
+
+    if (isNaN(guessedNumber)) {
+      messageDiv.innerHTML = "Vui lòng nhập một số hợp lệ.";
+      askForGuess();
+      return;
+    }
+
+    if (guessedNumber === randomNumber) {
+      messageDiv.innerHTML = `Chúc mừng! Bạn đã đoán đúng số ${randomNumber} trong ${attempts} lần thử!`;
+      return;
+    } else if (guessedNumber < randomNumber) {
+      messageDiv.innerHTML = "Số bạn đoán nhỏ hơn. Hãy thử lại!";
+    } else {
+      messageDiv.innerHTML = "Số bạn đoán lớn hơn. Hãy thử lại!";
+    }
+
+    askForGuess(); // Gọi lại hàm để cho phép đoán lại
+  }
+</script>
+</body>
+</html>

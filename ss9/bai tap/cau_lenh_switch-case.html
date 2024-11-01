@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Số Ngày Trong Tháng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Tính Số Ngày Trong Tháng</h1>
+    <label for="month">Nhập số thứ tự của tháng (1-12): </label>
+    <input type="number" id="month" min="1" max="12" required>
+    <br>
+    <button onclick="calculateDays()">Tính Số Ngày</button>
+    <h2 id="result"></h2>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+    function calculateDays() {
+        const month = parseInt(document.getElementById('month').value);
+        let days;
+
+        if (month < 1 || month > 12) {
+            alert('Vui lòng nhập tháng hợp lệ (1-12).');
+            return;
+        }
+
+        // Số ngày trong từng tháng
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        // Kiểm tra tháng 2 có phải năm nhuận không
+        const year = new Date().getFullYear();
+        if (month === 2) {
+            // Nếu là năm nhuận, tháng 2 có 29 ngày
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                days = 29;
+            } else {
+                days = daysInMonth[month - 1];
+            }
+        } else {
+            days = daysInMonth[month - 1];
+        }
+
+        document.getElementById('result').innerText = `Số ngày trong tháng ${month} là: ${days}`;
+    }
+
+</script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+</style>

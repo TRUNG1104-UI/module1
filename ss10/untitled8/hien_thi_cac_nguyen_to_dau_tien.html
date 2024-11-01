@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Số Nguyên Tố Đầu Tiên</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 20px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">20 Số Nguyên Tố Đầu Tiên</h1>
+<ul id="prime-numbers"></ul>
+
+<script>
+    const isPrime = (num) => {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    };
+
+    const primeNumbers = [];
+    let count = 0;
+    let number = 2;
+
+    while (count < 20) {
+        if (isPrime(number)) {
+            primeNumbers.push(number);
+            count++;
+        }
+        number++;
+    }
+
+    const ul = document.getElementById('prime-numbers');
+    primeNumbers.forEach(prime => {
+        const li = document.createElement('li');
+        li.innerText = prime;
+        ul.appendChild(li);
+    });
+</script>
+</body>
+</html>

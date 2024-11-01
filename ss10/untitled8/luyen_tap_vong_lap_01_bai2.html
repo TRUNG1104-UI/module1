@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Nhiệt Độ</title>
+</head>
+<body>
+<h1 style="text-align: center;">Kiểm Tra Nhiệt Độ</h1>
+<div id="message" style="text-align: center; font-size: 24px;"></div>
+
+<script>
+    // Lấy nhiệt độ từ người dùng
+    let temperature = prompt("Nhập nhiệt độ hiện tại (độ C):");
+
+    // Chuyển đổi nhiệt độ sang số
+    temperature = parseFloat(temperature);
+
+    // Kiểm tra và hiển thị thông báo phù hợp
+    const messageDiv = document.getElementById('message');
+    if (temperature > 100) {
+        messageDiv.innerText = "Nhiệt độ quá cao! Vui lòng giảm nhiệt độ.";
+    } else if (temperature < 20) {
+        messageDiv.innerText = "Nhiệt độ quá thấp! Vui lòng tăng nhiệt độ.";
+    } else {
+        messageDiv.innerText = "Nhiệt độ hiện tại là " + temperature + " độ C.";
+    }
+</script>
+</body>
+</html>

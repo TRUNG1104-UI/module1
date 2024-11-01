@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Hoa Hồng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Tính Hoa Hồng</h1>
+    <label for="sales">Nhập doanh số bán hàng: </label>
+    <input type="number" id="sales" required>
+    <br>
+    <button onclick="calculateCommission()">Tính Hoa Hồng</button>
+    <h2 id="result"></h2>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+    function calculateCommission() {
+        const sales = parseFloat(document.getElementById('sales').value);
+
+        if (isNaN(sales) || sales < 0) {
+            alert('Vui lòng nhập doanh số hợp lệ.');
+            return;
+        }
+
+        let commission;
+
+        // Quy định mức hoa hồng
+        if (sales <= 1000) {
+            commission = sales * 0.05; // 5% cho doanh số <= 1000
+        } else if (sales <= 5000) {
+            commission = sales * 0.10; // 10% cho doanh số từ 1001 đến 5000
+        } else {
+            commission = sales * 0.15; // 15% cho doanh số > 5000
+        }
+
+        document.getElementById('result').innerText = `Hoa hồng nhận được: ${commission.toFixed(2)} VNĐ`;
+    }
+
+</script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+</style>

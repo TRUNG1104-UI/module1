@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính Cước Điện Thoại</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Tính Cước Điện Thoại</h1>
+  <label for="minutes">Nhập số phút gọi: </label>
+  <input type="number" id="minutes" required>
+  <br>
+  <button onclick="calculateBill()">Tính Cước</button>
+  <h2 id="result"></h2>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+  function calculateBill() {
+    const minutes = parseInt(document.getElementById('minutes').value);
+
+    if (isNaN(minutes) || minutes < 0) {
+      alert('Vui lòng nhập số phút hợp lệ.');
+      return;
+    }
+
+    // Giả sử mức phí như sau:
+    const baseRate = 1000; // phí cố định
+    const firstRate = 1500; // phí cho 50 phút đầu
+    const additionalRate = 2000; // phí cho mỗi phút sau 50 phút
+
+    let bill = baseRate; // bắt đầu với phí cố định
+
+    if (minutes <= 50) {
+      bill += firstRate; // tính phí cho 50 phút đầu
+    } else {
+      bill += firstRate; // tính phí cho 50 phút đầu
+      bill += (minutes - 50) * additionalRate; // tính phí cho các phút vượt quá
+    }
+
+    document.getElementById('result').innerText = `Cước điện thoại: ${bill.toLocaleString()} VNĐ`;
+  }
+
+</script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+</style>

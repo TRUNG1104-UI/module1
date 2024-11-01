@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dãy Fibonacci Đầu Tiên</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">20 Số Trong Dãy Fibonacci Đầu Tiên</h1>
+<ul id="fibonacci-list"></ul>
+
+<script>
+    const fibonacciList = document.getElementById('fibonacci-list');
+    const fibonacciNumbers = [0, 1]; // Khởi tạo dãy Fibonacci
+
+    // Tính toán 18 số tiếp theo (tổng cộng 20 số)
+    for (let i = 2; i < 20; i++) {
+        const nextNumber = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
+        fibonacciNumbers.push(nextNumber);
+    }
+
+    // Hiển thị dãy Fibonacci lên trang
+    fibonacciNumbers.forEach(num => {
+        const li = document.createElement('li');
+        li.innerText = num;
+        fibonacciList.appendChild(li);
+    });
+</script>
+</body>
+</html>

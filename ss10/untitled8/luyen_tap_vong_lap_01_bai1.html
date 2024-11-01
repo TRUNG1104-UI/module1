@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đếm Từ 1 Đến 100</title>
+</head>
+<body>
+<h1 style="text-align: center;">Đếm Từ 1 Đến 100</h1>
+<div id="output" style="text-align: center; font-size: 24px;"></div>
+
+<script>
+    const output = document.getElementById('output');
+
+    for (let i = 1; i <= 100; i++) {
+        output.innerText += i + ' ';
+        if (i === 99) {
+            alert('Đã hoàn thành!');
+        }
+    }
+</script>
+</body>
+</html>
