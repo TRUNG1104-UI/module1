@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Lãi Ngân Hàng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Tính Lãi Ngân Hàng</h1>
+<label for="principal">Số tiền ban đầu:</label>
+<input type="number" id="principal" placeholder="Nhập số tiền" required />
+
+<label for="months">Số tháng cho vay:</label>
+<input type="number" id="months" placeholder="Nhập số tháng" required />
+
+<label for="interest">Lãi suất hàng tháng (%):</label>
+<input type="number" id="interest" placeholder="Nhập lãi suất" required />
+
+<button id="calculate">Tính Lãi</button>
+
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    input {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 200px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+    document.getElementById('calculate').addEventListener('click', function() {
+        const principal = parseFloat(document.getElementById('principal').value);
+        const months = parseInt(document.getElementById('months').value);
+        const interestRate = parseFloat(document.getElementById('interest').value) / 100; // Chuyển đổi từ % sang thập phân
+
+        if (isNaN(principal) || isNaN(months) || isNaN(interestRate) || principal <= 0 || months <= 0 || interestRate < 0) {
+            document.getElementById('result').textContent = 'Vui lòng nhập các giá trị hợp lệ.';
+            return;
+        }
+
+        let totalAmount = principal;
+
+        for (let i = 0; i < months; i++) {
+            totalAmount += totalAmount * interestRate; // Tính lãi mẹ đẻ lại con
+        }
+
+        const interestEarned = totalAmount - principal;
+        document.getElementById('result').textContent = `Tổng số tiền sau ${months} tháng là: ${totalAmount.toFixed(2)} (Lãi thu được: ${interestEarned.toFixed(2)})`;
+    });
+
+</script>

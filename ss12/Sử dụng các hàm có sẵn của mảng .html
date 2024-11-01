@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nối Mảng Chuỗi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Nối Tất Cả Các Phần Tử Trong Mảng Chuỗi</h1>
+<button id="joinButton">Nối Mảng</button>
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+</style>
+<script>
+    document.getElementById('joinButton').addEventListener('click', function() {
+        const myColor = ["Red", "Green", "White", "Black"];
+
+        // Nối các phần tử trong mảng lại với nhau
+        const result = myColor.join(',');
+
+        // Hiển thị kết quả
+        document.getElementById('result').textContent = result;
+    });
+
+</script>

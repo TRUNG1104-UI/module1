@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Giai Thừa</title>
+</head>
+<body>
+<h1>Tính Giai Thừa của Số Nguyên Dương</h1>
+<input type="number" id="num" placeholder="Nhập một số nguyên dương" />
+<button id="calculate">Tính Giai Thừa</button>
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+    document.getElementById('calculate').addEventListener('click', function() {
+        const num = parseInt(document.getElementById('num').value);
+        const resultElement = document.getElementById('result');
+
+        if (isNaN(num) || num < 0) {
+            resultElement.textContent = 'Vui lòng nhập một số nguyên dương.';
+            return;
+        }
+
+        const factorialResult = factorial(num);
+        resultElement.textContent = `Giai thừa của ${num} là: ${factorialResult}`;
+    });
+
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+</script>

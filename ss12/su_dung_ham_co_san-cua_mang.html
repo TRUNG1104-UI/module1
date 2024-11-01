@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chèn Dấu - Giữa Số Chẵn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Chèn Dấu - Giữa Hai Số Chẵn</h1>
+<input type="text" id="inputNumber" placeholder="Nhập số" />
+<button id="processButton">Xử Lý</button>
+
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    input {
+        padding: 10px;
+        width: 200px;
+        margin: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+    document.getElementById('processButton').addEventListener('click', function() {
+        const inputNumber = document.getElementById('inputNumber').value;
+
+        // Kiểm tra nếu đầu vào là số
+        if (!/^\d+$/.test(inputNumber)) {
+            document.getElementById('result').textContent = 'Vui lòng nhập một số hợp lệ.';
+            return;
+        }
+
+        let result = '';
+
+        for (let i = 0; i < inputNumber.length; i++) {
+            result += inputNumber[i];
+
+            // Kiểm tra nếu số hiện tại và số tiếp theo đều là số chẵn
+            if (i < inputNumber.length - 1 && inputNumber[i] % 2 === 0 && inputNumber[i + 1] % 2 === 0) {
+                result += '-';
+            }
+        }
+
+        // Hiển thị kết quả
+        document.getElementById('result').textContent = result;
+    });
+
+</script>

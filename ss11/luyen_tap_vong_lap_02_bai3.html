@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tam Giác Vuông</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Tam Giác Vuông</h1>
+<div id="triangle-container">
+    <div class="triangle" id="right-angle-top-left"></div>
+    <div class="triangle" id="right-angle-top-right"></div>
+    <div class="triangle" id="right-angle-bottom-left"></div>
+    <div class="triangle" id="right-angle-bottom-right"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    #triangle-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+    }
+
+    .triangle {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        margin: 20px;
+    }
+
+    #right-angle-top-left {
+        border-width: 100px 100px 0 0;
+        border-color: blue transparent transparent transparent;
+    }
+
+    #right-angle-top-right {
+        border-width: 100px 0 0 100px;
+        border-color: blue transparent transparent transparent;
+    }
+
+    #right-angle-bottom-left {
+        border-width: 0 100px 100px 0;
+        border-color: transparent transparent blue transparent;
+    }
+
+    #right-angle-bottom-right {
+        border-width: 0 0 100px 100px;
+        border-color: transparent transparent blue transparent;
+    }
+
+</style>
