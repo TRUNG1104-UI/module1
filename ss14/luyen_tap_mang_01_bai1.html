@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đếm Số Nguyên Lớn Hơn Hoặc Bằng 10</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Đếm Số Nguyên Lớn Hơn Hoặc Bằng 10</h1>
+<button id="countButton">Tính Số</button>
+
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+    document.getElementById('countButton').addEventListener('click', function() {
+        // Khởi tạo mảng số nguyên
+        const numbers = [5, 10, 15, 8, 12, 3, 20, 6, 9, 11];
+
+        // Đếm số lượng số lớn hơn hoặc bằng 10
+        let count = 0;
+
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] >= 10) {
+                count++;
+            }
+        }
+
+        // Hiển thị kết quả
+        document.getElementById('result').textContent = `Có ${count} số nguyên lớn hơn hoặc bằng 10.`;
+    });
+
+</script>

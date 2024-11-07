@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    .info {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Temperature Converter</h2>
+
+<div class="info">
+  <p>Nhiệt độ ở độ C: <span id="celsius"></span></p>
+  <p>Nhiệt độ ở độ F: <span id="fahrenheit"></span></p>
+  <p>Nhiệt độ ở độ K: <span id="kelvin"></span></p>
+</div>
+
+<script>
+  // Định nghĩa lớp Temperature
+  class Temperature {
+    constructor(celsius) {
+      // Nhiệt độ phải >= -273 độ C (giới hạn của nhiệt độ tuyệt đối)
+      if (celsius < -273) {
+        throw new Error('Nhiệt độ không thể thấp hơn -273 độ C');
+      }
+      this.celsius = celsius;
+    }
+
+    // Chuyển từ độ C sang độ F
+    toFahrenheit() {
+      return (this.celsius * 9/5) + 32;
+    }
+
+    // Chuyển từ độ C sang độ Kelvin
+    toKelvin() {
+      return this.celsius + 273.15;
+    }
+  }
+
+  // Khởi tạo đối tượng Temperature với giá trị nhiệt độ là 25 độ C
+  const temperature = new Temperature(25);
+
+  // Hiển thị giá trị nhiệt độ trên màn hình
+  document.getElementById('celsius').textContent = temperature.celsius + " °C";
+  document.getElementById('fahrenheit').textContent = temperature.toFahrenheit() + " °F";
+  document.getElementById('kelvin').textContent = temperature.toKelvin() + " K";
+</script>
+
+</body>
+</html>

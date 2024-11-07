@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ Điển Tiếng Anh - Tiếng Việt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Từ Điển Tiếng Anh - Tiếng Việt</h1>
+<input type="text" id="searchWord" placeholder="Nhập từ tiếng Anh" />
+<button id="searchButton">Tra Cứu</button>
+
+<h2>Kết quả:</h2>
+<p id="result"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    input {
+        padding: 10px;
+        width: 200px;
+        margin: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+</style>
+<script>
+    // Danh sách từ điển
+    const dictionary = {
+        "hello": "xin chào",
+        "goodbye": "tạm biệt",
+        "thank you": "cảm ơn",
+        "please": "xin vui lòng",
+        "yes": "vâng",
+        "no": "không",
+        "cat": "mèo",
+        "dog": "chó",
+        "book": "sách",
+        "computer": "máy tính"
+    };
+
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchWord = document.getElementById('searchWord').value.toLowerCase();
+
+        // Tìm kiếm từ trong từ điển
+        const translation = dictionary[searchWord];
+
+        // Hiển thị kết quả
+        if (translation) {
+            document.getElementById('result').textContent = `${searchWord} (tiếng Việt): ${translation}`;
+        } else {
+            document.getElementById('result').textContent = `Không tìm thấy từ "${searchWord}" trong từ điển.`;
+        }
+    });
+
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Object Example</title>
+    <style>
+        /* Style for the canvas */
+        #rectangleCanvas {
+            border: 1px solid black;
+        }
+        .info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Rectangle Example</h2>
+
+<canvas id="rectangleCanvas" width="500" height="300"></canvas>
+
+<div class="info">
+    <p>Diện tích: <span id="area"></span></p>
+    <p>Chu vi: <span id="perimeter"></span></p>
+</div>
+
+<button onclick="changeDimensions()">Thay đổi kích thước</button>
+
+<script>
+    // Định nghĩa lớp Rectangle
+    class Rectangle {
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        // Tính diện tích
+        getArea() {
+            return this.length * this.width;
+        }
+
+        // Tính chu vi
+        getPerimeter() {
+            return 2 * (this.length + this.width);
+        }
+
+        // Vẽ hình chữ nhật lên canvas
+        draw() {
+            const canvas = document.getElementById('rectangleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Xóa canvas trước khi vẽ
+            ctx.fillStyle = 'lightblue';
+            ctx.fillRect(50, 50, this.length, this.width); // Vẽ hình chữ nhật
+        }
+    }
+
+    // Khởi tạo đối tượng Rectangle
+    let rect = new Rectangle(200, 100);
+
+    // Hiển thị hình chữ nhật và thông tin diện tích, chu vi
+    function displayRectangle() {
+        rect.draw();
+        document.getElementById('area').textContent = rect.getArea();
+        document.getElementById('perimeter').textContent = rect.getPerimeter();
+    }
+
+    // Thay đổi chiều dài và chiều rộng của hình chữ nhật
+    function changeDimensions() {
+        rect.length = 300;  // Thay đổi chiều dài
+        rect.width = 150;   // Thay đổi chiều rộng
+
+        // Cập nhật lại hình ảnh và thông tin
+        displayRectangle();
+    }
+
+    // Khởi tạo và hiển thị lần đầu
+    displayRectangle();
+</script>
+</body>
+</html>
