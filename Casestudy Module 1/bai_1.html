@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bai_1</title>
+</head>
+<body>
+<h1>bai_1</h1>
+<script>
+    let n = +prompt("Nhập độ dài của mảng: ");
+    let array = new Array(n);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = +prompt(`Nhập phần tử thứ ${i + 1}`);
+    }
+    console.log(array);
+
+    //kiểm tra mảng
+    let check = true;
+    if (n <= 1) {
+        alert("Độ dài mảng không thoả điều kiện để kiểm tra");
+    } else if (n == 2) {
+        if (array[0] > array[1]) {
+            check = false;
+        }
+    } else {
+        let khoangCach = array[1] - array[0];
+        for (let i = 2; i < array.length; i++) {
+            if (array[i] - array[i - 1] !== khoangCach) {
+                check = false;
+                break;
+            }
+        }
+    }
+
+    //trả kết quả
+    if (check) {
+        alert("OK");
+    } else {
+        alert("NO");
+    }
+</script>
+</body>
+</html>

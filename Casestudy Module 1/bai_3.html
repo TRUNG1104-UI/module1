@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bai_3</title>
+</head>
+<body>
+<h1>bai_3</h1>
+<script>
+  let n = +prompt(`Độ dài của mảng là:`);
+  let array = new Array(n);
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    array[i] = +prompt(`Nhập phần tử thứ ${i + 1}`);
+  }
+  console.log(array);
+
+  if (n > 1) {
+    for (let i = 0; i < Math.floor(n / 2); i++) {
+      if (array[i] === array[n - (i + 1)]) {
+        count++;
+      }
+    }
+
+    if (count === Math.floor(n / 2)) {
+      console.log(`OK`);
+    } else {
+      console.log(`NO`);
+    }
+  } else {
+    console.log(`Độ dài mảng không thoả điều kiện`);
+  }
+</script>
+</body>
+</html>

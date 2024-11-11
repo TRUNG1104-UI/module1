@@ -2,84 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng công tắc và bóng đèn</title>
 </head>
 <body>
+<script>
+    // Lớp mô tả bóng đèn
+    class LightBulb {
+        private booleanisOn;  // Trạng thái của bóng đèn (bật hoặc tắt)
 
+        // Constructor khởi tạo bóng đèn, mặc định bóng đèn tắt
+        public LightBulb() {
+            this.isOn = false;
+        }
+
+        // Phương thức bật bóng đèn
+        public void turnOn() {
+            this.isOn = true;
+        }
+
+        // Phương thức tắt bóng đèn
+        public void turnOff() {
+            this.isOn = false;
+        }
+
+        // Phương thức hiển thị trạng thái của bóng đèn
+        public void showStatus() {
+            if (isOn) {
+                System.out.println("Bóng đèn đang bật.");
+            } else {
+                System.out.println("Bóng đèn đang tắt.");
+            }
+        }
+
+        // Kiểm tra trạng thái của bóng đèn
+        public booleanisOn() {
+            return isOn;
+        }
+    }
+
+    // Lớp mô tả công tắc
+    class Switch {
+        private LightBulblightBulb;  // Công tắc sẽ kết nối với bóng đèn
+
+        // Constructor để kết nối công tắc với bóng đèn
+        public Switch(LightBulblightBulb) {
+        this.lightBulb = lightBulb;
+    }
+
+    // Phương thức bật/tắt công tắc
+    public voidflip() {
+        if (lightBulb.isOn()) {
+            lightBulb.turnOff();  // Nếu bóng đèn bật thì tắt
+        } else {
+            lightBulb.turnOn();   // Nếu bóng đèn tắt thì bật
+        }
+        lightBulb.showStatus();  // Hiển thị trạng thái của bóng đèn sau khi thay đổi
+    }
+    }
+
+    // Lớp Main để chạy chương trình
+    publicclassMain {
+        publicstaticvoidmain(String[]args){
+        // Tạo đối tượng bóng đèn và công tắc
+        LightBulblightBulb = new LightBulb();
+        SwitchlightSwitch = new Switch(lightBulb);
+
+        // Bật/tắt công tắc 10 lần
+        for (int i = 0; i < 10; i++){
+        System.out.println("Lần " + (i + 1) + ":");
+        lightSwitch.flip();  // Bật/tắt công tắc
+        try {
+        Thread.sleep(500); // Dừng một chút giữa các lần bật/tắt
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    }
+    }
+    }
+</script>
 </body>
 </html>
-   sw
-       // Lớp mô tả bóng đèn
-       class LightBulb {
-           private boolean isOn;  // Trạng thái của bóng đèn (bật hoặc tắt)
-
-           // Constructor khởi tạo bóng đèn, mặc định bóng đèn tắt
-           public LightBulb() {
-               this.isOn = false;
-           }
-
-           // Phương thức bật bóng đèn
-           public void turnOn() {
-               this.isOn = true;
-           }
-
-           // Phương thức tắt bóng đèn
-           public void turnOff() {
-               this.isOn = false;
-           }
-
-           // Phương thức hiển thị trạng thái của bóng đèn
-           public void showStatus() {
-               if (isOn) {
-                   System.out.println("Bóng đèn đang bật.");
-               } else {
-                   System.out.println("Bóng đèn đang tắt.");
-               }
-           }
-
-           // Kiểm tra trạng thái của bóng đèn
-           public boolean isOn() {
-               return isOn;
-           }
-       }
-
-       // Lớp mô tả công tắc
-       class Switch {
-           private LightBulb lightBulb;  // Công tắc sẽ kết nối với bóng đèn
-
-           // Constructor để kết nối công tắc với bóng đèn
-           public Switch(LightBulb lightBulb) {
-           this.lightBulb = lightBulb;
-       }
-
-       // Phương thức bật/tắt công tắc
-       public void flip() {
-           if (lightBulb.isOn()) {
-               lightBulb.turnOff();  // Nếu bóng đèn bật thì tắt
-           } else {
-               lightBulb.turnOn();   // Nếu bóng đèn tắt thì bật
-           }
-           lightBulb.showStatus();  // Hiển thị trạng thái của bóng đèn sau khi thay đổi
-       }
-       }
-
-       // Lớp Main để chạy chương trình
-       public class Main {
-           public static void main(String[] args) {
-           // Tạo đối tượng bóng đèn và công tắc
-           LightBulb lightBulb = new LightBulb();
-           Switch lightSwitch = new Switch(lightBulb);
-
-           // Bật/tắt công tắc 10 lần
-           for (int i = 0; i < 10; i++) {
-           System.out.println("Lần " + (i + 1) + ":");
-           lightSwitch.flip();  // Bật/tắt công tắc
-           try {
-           Thread.sleep(500); // Dừng một chút giữa các lần bật/tắt
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-       }
-       }
-       }
-

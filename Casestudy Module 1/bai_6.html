@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai_6</title>
+</head>
+<body>
+<h1>bai_6</h1>
+<script>
+    let n = parseInt(prompt("Nhập độ dài của mảng :"));
+    let arr = [];
+
+    for (let i = 0; i < n; i++) {
+        let num = parseInt(prompt(`Nhập phần tử thứ ${i + 1}`));
+        arr.push(num);
+    }
+    console.log("Mảng sau khi nhập: ", arr);
+
+    function checkArray(arr) {
+        let even = false;
+        let odd = false;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                even = true;
+            } else {
+                odd = true;
+            }
+        }
+
+        if (even && odd) {
+            return -1;
+        } else if (odd) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    console.log(checkArray(arr));
+</script>
+</body>
+</html>

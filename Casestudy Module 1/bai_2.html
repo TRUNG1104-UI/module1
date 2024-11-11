@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bai_2</title>
+</head>
+<body>
+<h1>bai_2</h1>
+<script>
+    //viết hàm truyền vào 3 tham số x, y,z
+    //kiểm tra có phải 3 cạnh của một tam giác
+
+    function checkTriangle(a, b, c) {
+        //kiểm tra 3 cạnh nhập vào là số
+        let check = false;
+        if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
+            check = true;
+        } else {
+            alert("Giá trị nhập vào chưa hợp lệ. Vui lòng nhập lại");
+        }
+
+        if (a > 0 && b > 0 && c > 0 && a < b + c && b < a + c && c < a + b) {
+            if (
+                a * a == b * b + c * c ||
+                b * b == a * a + c * c ||
+                c * c == a * a + b * b
+            ) {
+                return `là cạnh của một tam giác vuông`;
+            }
+            return `chỉ là 3 cạnh của một tam giác`;
+        }
+        return `không phải là cạnh của một tam giác`;
+    }
+
+    let canhA = +prompt("Nhập cạnh A");
+    let canhB = +prompt("Nhập cạnh B");
+    let canhC = +prompt("Nhập cạnh C");
+    console.log(checkTriangle(canhA, canhB, canhC));
+</script>
+</body>
+</html>
