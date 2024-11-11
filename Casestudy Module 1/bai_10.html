@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai_10</title>
+</head>
+<body>
+<h1>bai_10</h1>
+<script>
+    let str = prompt("Nhập vào một chuỗi: ").toLowerCase();
+
+    function checkString(inputStr) {
+        const vowels = ["a", "e", "i", "o", "u"];
+        let arr = [];
+
+        for (let char of inputStr) {
+            if (vowels.includes(char) && !arr.includes(char)) {
+                arr.push(char);
+            }
+        }
+        return arr;
+    }
+
+    console.log("Các nguyên âm trong chuỗi là: ", checkString(str));
+
+</script>
+
+</body>
+</html>
