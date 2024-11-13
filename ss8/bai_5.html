@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xếp hạng học lực</title>
+</head>
+<body>
+
+<!--idea: điểm kiểm tra: hệ số 1 -->
+<!--idea: điểm giữa kỳ: hệ số 2  -->
+<!--idea: điểm giữa kỳ: hệ số 3 -->
+<!--idea: điểm TB >=8 : Giỏi -->
+<!--idea: 6.5=< điểm TB < 8 : Khá -->
+<!--idea: 4.5=< điểm TB < 6.5 : Trung bình -->
+<!--idea: điểm TB < 4.5 : Yếu -->
+
+<script>
+
+    let diem1 = Number(prompt("Mời nhập điểm kiểm tra"));
+    let diem2 = Number(prompt("Mời nhập điểm thi giữa kỳ"));
+    let diem3 = Number(prompt("Mời nhập điểm thi cuối kỳ"));
+    let diemTB = (diem1 + diem2 * 2 + diem3 * 3) / 6;
+
+    if (diemTB >= 8) {
+        document.write("Điểm trung bình là: " + diemTB.toFixed(1) + " => Xếp hạng học lực: Giỏi");
+    } else if (diemTB >= 6.5) {
+        document.write("Điểm trung bình là: " + diemTB.toFixed(1) + " => Xếp hạng học lực: Khá");
+    } else if (diemTB >= 4.5) {
+        document.write("Điểm trung bình là: " + diemTB.toFixed(1) + " => Xếp hạng học lực: Trung bình");
+    } else
+        document.write("Điểm trung bình là: " + diemTB.toFixed(1) + " => Xếp hạng học lực: Yếu");
+
+</script>
+
+</body>
+</html>

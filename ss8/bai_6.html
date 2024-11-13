@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính hoa hồng</title>
+</head>
+<body>
+
+<!--đạt doanh số >=20TR => hoa hồng = 5% doanh số-->
+<!--đạt doanh số >=40TR => hoa hồng = 10% doanh số-->
+<!--đạt doanh số >=80TR => hoa hồng = 15% doanh số-->
+<!--đạt doanh số >100TR => hoa hồng = 20% doanh số-->
+<!--công thức tính: doanh số x số % -->
+
+<script>
+    let doanhSo = Number(prompt("Nhập doanh số bán hàng:"));
+    let muc1 = doanhSo * 0.05;
+    let muc2 = doanhSo * 0.1;
+    let muc3 = doanhSo * 0.15;
+    let muc4 = doanhSo * 0.20;
+
+    if (doanhSo >= 100000000) {
+        document.write("Hoa hồng của nhân viên là: " + new Intl.NumberFormat("en-US").format(muc4));
+    } else if (doanhSo >= 80000000) {
+        document.write("Hoa hồng của nhân viên là: " + new Intl.NumberFormat("en-US").format(muc3));
+    } else if (doanhSo >= 40000000) {
+        document.write("Hoa hồng của nhân viên là: " + new Intl.NumberFormat("en-US").format(muc2));
+    } else if (doanhSo >= 20000000) {
+        document.write("Hoa hồng của nhân viên là: " + new Intl.NumberFormat("en-US").format(muc1));
+    } else {
+        document.write("Doanh số chưa đạt mức nhận hoa hồng");
+    }
+
+</script>
+</body>
+</html>
