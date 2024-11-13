@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //Viết chương trình đếm số nguyên âm trong một chuỗi
+
+  let array = prompt("Nhập một chuỗi bất kỳ");
+  let nguyenAm = ["u", "e", "o", "a", "i", "U", "E", "O", "A", "I"];
+  let count = 0;
+
+  for (let i = 0; i < nguyenAm.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[j] === nguyenAm[i]) {
+        count++;
+      }
+    }
+  }
+
+  console.log("Mảng nhập vào là: " + array);
+  console.log(`Số lượng nguyên âm trong mảng là: ${count}`);
+
+</script>
+</body>
+</html>

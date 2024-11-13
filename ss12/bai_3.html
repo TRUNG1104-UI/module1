@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm MAX và AVERAGE</title>
+</head>
+<body>
+<script>
+
+  //Viết chương trình khởi tạo mảng số nguyên.
+  // Hiển hiện giá trị lớn nhất trong mảng đó.
+  // In ra giá trị trung bình của các phần tử trong mảng.
+
+  let n = +prompt("Nhập số lượng phần tử");
+  let array = new Array(n); //số lượng phần tử
+
+  for (let i = 0; i < array.length; i++) {
+    array[i] = +prompt("Nhập phần tử thứ " + i);
+  }
+  console.log(array);
+
+  //tìm giá trị MAX
+  let max = array[0];
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > max) {
+      max = array[i];
+    }
+
+  }
+  document.write("Giá trị lớn nhất là: " + max);
+  document.write("<br>");
+
+  // tính giá trị trung bình
+
+  let sum = 0;
+  for (let arrayElement of array) {
+    sum += arrayElement;
+  }
+
+  let avr = sum / n;
+  document.write("Trung bình các giá trị trong mảng là: " + avr);
+
+
+</script>
+</body>
+</html>
