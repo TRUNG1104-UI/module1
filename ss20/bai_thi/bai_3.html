@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm Tra Số Ngày Trong Tháng</title>
+  <script>
+    // Hàm kiểm tra năm nhuận
+    function isLeapYear(year) {
+      if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        return true; // Năm nhuận
+      }
+      return false; // Không phải năm nhuận
+    }
+
+    // Hàm kiểm tra số ngày trong tháng
+    function getDaysInMonth(month, year) {
+      // Kiểm tra nếu tháng không hợp lệ
+      if (month < 1 || month > 12) {
+        return "Tháng không hợp lệ!";
+      }
+
+      // Tháng 2: Kiểm tra năm nhuận
+      if (month === 2) {
+        if (isLeapYear(year)) {
+          return 29; // Năm nhuận, tháng 2 có 29 ngày
+        } else {
+          return 28; // Không phải năm nhuận, tháng 2 có 28 ngày
+        }
+      }
+
+      // Các tháng còn lại
+      const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      return daysInMonth[month - 1];
+    }
+
+    // Hàm kiểm tra định dạng ngày tháng
+    function validateDateInput(dateString) {
+      const regex = /^(0[1-9]|1[0-2])\/(20\d{2})$/; // Định dạng MM/yyyy
+      return regex.test(dateString);
+    }
+
+    // Hàm khi người dùng nhấn nút "Tính"
+    function calculateDays() {
+      const dateInput = document.getElementById('dateInput').value;
+
+      // Kiểm tra định dạng nhập vào
+      if (!validateDateInput(dateInput)) {
+        document.getElementById('result').innerText = "Định dạng không hợp lệ! Vui lòng nhập theo định dạng MM/yyyy.";
+        return;
+      }
+
+      // Tách tháng và năm
+      const [month, year] = dateInput.split('/').map(Number);
+
+      // Tính số ngày trong tháng
+      const days = getDaysInMonth(month, year);
+      document.getElementById('result').innerText = `Số ngày trong tháng ${month}/${year} là: ${days} ngày.`;
+    }
+  </script>
+</head>
+<body>
+<h1>Kiểm Tra Số Ngày Trong Tháng</h1>
+<label for="dateInput">Nhập tháng và năm (MM/yyyy):</label>
+<input type="text" id="dateInput" placeholder="VD: 02/2020" required>
+<button onclick="calculateDays()">Tính</button>
+
+<p id="result"></p>
+</body>
+</html>

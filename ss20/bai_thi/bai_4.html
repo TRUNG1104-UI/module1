@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Công Nhân</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-container, .list-container {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .form-container input, .form-container select {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .btn-sort {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-sort:hover {
+      background-color: #0b7dda;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Quản Lý Công Nhân</h1>
+
+<div class="form-container">
+  <h2>Thêm Công Nhân</h2>
+  <form id="workerForm">
+    <input type="text" id="name" placeholder="Họ và tên" required><br>
+    <input type="date" id="dob" placeholder="Ngày sinh" required><br>
+    <input type="text" id="address" placeholder="Địa chỉ" required><br>
+    <input type="number" id="salary" placeholder="Lương" required><br>
+    <select id="position" required>
+      <option value="">Chức vụ</option>
+      <option value="Công nhân">Công nhân</option>
+      <option value="Giám sát">Giám sát</option>
+      <option value="Quản lý">Quản lý</option>
+    </select><br>
+    <button type="submit">Thêm Công Nhân</button>
+  </form>
+</div>
+
+<div class="list-container">
+  <button class="btn-sort" onclick="sortWorkers()">Sắp Xếp Danh Sách Theo Họ và Tên</button>
+  <h2>Danh Sách Công Nhân</h2>
+  <table id="workersTable">
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Họ và tên</th>
+      <th>Ngày sinh</th>
+      <th>Địa chỉ</th>
+      <th>Lương</th>
+      <th>Chức vụ</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Danh sách công nhân sẽ được hiển thị tại đây -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Mảng lưu trữ công nhân
+  let workers = [];
+  let stt = 1; // Số thứ tự công nhân
+
+  // Hàm thêm công nhân vào danh sách
+  document.getElementById('workerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const dob = document.getElementById('dob').value;
+    const address = document.getElementById('address').value;
+    const salary = document.getElementById('salary').value;
+    const position = document.getElementById('position').value;
+
+    // Thêm công nhân vào mảng
+    workers.push({ stt, name, dob, address, salary, position });
+
+    // Tăng số thứ tự
+    stt++;
+
+    // Làm mới form và hiển thị lại danh sách công nhân
+    document.getElementById('workerForm').reset();
+    displayWorkers();
+  });
+
+  // Hàm hiển thị danh sách công nhân
+  function displayWorkers() {
+    const tableBody = document.getElementById('workersTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Xóa danh sách hiện tại
+
+    workers.forEach(worker => {
+      const row = tableBody.insertRow();
+      row.innerHTML = `
+                    <td>${worker.stt}</td>
+                    <td>${worker.name}</td>
+                    <td>${worker.dob}</td>
+                    <td>${worker.address}</td>
+                    <td>${worker.salary}</td>
+                    <td>${worker.position}</td>
+                `;
+    });
+  }
+
+  // Hàm sắp xếp công nhân theo họ và tên
+  function sortWorkers() {
+    workers.sort((a, b) => a.name.localeCompare(b.name));
+    displayWorkers(); // Hiển thị lại danh sách sau khi sắp xếp
+  }
+</script>
+</body>
+</html>

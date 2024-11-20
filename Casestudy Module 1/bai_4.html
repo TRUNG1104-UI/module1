@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
     <title>bai_4</title>
 </head>
 <body>
-<h1>bai_4</h1>
 <script>
     function find(x) {
-        //b1: kiểm tra chuỗi có chứa "/", gán giá trị tử số và mẫu số
-        if (x.includes("/")) {
-            const array = x.split("/");
-            tuSo = Number(array[0]);
-            mauSo = Number(array[1]);
+        // Kiểm tra xem x có phải là phân số (dạng chuỗi có chứa "/")
+        if (typeof x !== "string" || !x.includes("/")) {
+            console.log("ko phải phân số");
+            return;
         }
-        //b2: kiểm tra tử số và mẫu số là số và mẫu số phải !0
-        if (!isNaN(tuSo) && !isNaN(mauSo) && mauSo !== 0) {
-            if (tuSo !== mauSo && tuSo !== 0) {
-                //trường hợp tử số khác mẫu số => tìm ước chung lớn nhất
-                let max = tuSo > mauSo ? tuSo : mauSo;
-                let min = tuSo < mauSo ? tuSo : mauSo;
-                let uoc = max % min;
-                if (uoc !== 0) {
-                    return `${tuSo / uoc} / ${mauSo / uoc}`;
-                } else if (mauSo / min !== 1) {
-                    return `${tuSo / min} / ${mauSo / min}`;
-                } else {
-                    return `${tuSo / mauSo}`;
-                }
-            }
-            return `${tuSo / mauSo}`;
-        }
-        return `Không phải là phân số`;
-    }
 
-    let x = prompt("Nhập tham số (x) bất kỳ để kiểm tra");
-    console.log(find(x));
+        // Tách tử số và mẫu số từ chuỗi x
+        let [numerator, denominator] = x.split("/").map(Number);
+
+        // Kiểm tra nếu tử số hoặc mẫu số không hợp lệ hoặc mẫu số bằng 0
+        if (isNaN(numerator) || isNaN(denominator) || denominator === 0) {
+            console.log("ko phải phân số");
+            return;
+        }
+
+        // Tìm ước chung lớn nhất (GCD) bằng cách sử dụng vòng lặp
+        let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+        // Rút gọn phân số
+        let divisor = gcd(Math.abs(numerator), Math.abs(denominator));
+        numerator /= divisor;
+        denominator /= divisor;
+
+
+        console.log(denominator === 1 ? numerator : `${numerator}/${denominator}`);
+    }
+    let input = prompt(" nhập số cần kiểm tra");
+    find(input);
+
 </script>
 </body>
 </html>
